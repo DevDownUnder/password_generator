@@ -1,5 +1,6 @@
 //DOM Elements
 //Variables are named after the ID selectors in HTML + El for element
+//document signifies where to find the element id
 
 const resultEl = document.getElementById('result');
 const lengthEl = document.getElementById('length');
@@ -19,9 +20,10 @@ const randomFunction = {
     symbol: getRandomSymbol
 };
 
-//Add event listener for the mouse click 
+//Add event listener -- User clicks mouse on "Generate password"
+
 generateEl.addEventListener('click', () => {
-    const length = lengthEl.value;
+    const length = +lengthEl.value;
 
     console.log(length);
 });
