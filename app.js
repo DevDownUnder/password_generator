@@ -1,4 +1,14 @@
+//DOM Elements
+//Variables are named after the ID selectors in HTML + El for element
 
+const resultEl = document.getElementById('result');
+const lengthEl = document.getElementById('length');
+const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lowercase');
+const numbersEl = document.getElementById('numbers');
+const symbolsEl = document.getElementById('symbols');
+const generateEl = document.getElementById('generate');
+const clipboardEl = document.getElementById('clipboard');
 
 
 
@@ -7,7 +17,14 @@ const randomFunction = {
     upper: getRandomUpper,
     number: getRandomNumber,
     symbol: getRandomSymbol
-}
+};
+
+//Add event listener for the mouse click 
+generateEl.addEventListener('click', () => {
+    const length = lengthEl.value;
+
+    console.log(length);
+});
 
 
 
