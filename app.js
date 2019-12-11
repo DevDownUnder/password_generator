@@ -66,7 +66,18 @@ function generatePassword(lower, upper, number, symbol, length) {
     console.log('typesArr: ', typesArr);
 
     //3. Loop over length call generator function for each type 
+    if (typesCount === 0) {
+        return ' ';
+    }
 
+    //this needs to be broken down please.......
+    for (let i = 0; i < length; i += typesCount) {
+        typesArr.forEach(type => {
+            const funcName = Object.keys(type)[0];
+
+            generatePassword += randomFunction[funcName]();
+        });
+    }
 }
 
 
