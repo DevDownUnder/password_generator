@@ -50,12 +50,12 @@ function generatePassword(lower, upper, number, symbol, length) {
     //3. Loop over length call generator function for each type 
     //4. Add final pw to the pw var and return to resultEl.innerText above
 
-    let generatePassword = '';
+    let generatedPassword = '';
 
     //1. Initialise pw variable 
     const typesCount = lower + upper + number + symbol;
 
-    console.log('typesCount: ', typesCount);
+    // console.log('typesCount: ', typesCount);
 
     //2. Filter out unchecked types 
     const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter
@@ -63,7 +63,7 @@ function generatePassword(lower, upper, number, symbol, length) {
             item => Object.values(item)[0]
         );
 
-    console.log('typesArr: ', typesArr);
+    //console.log('typesArr: ', typesArr);
 
     //3. Loop over length call generator function for each type 
     if (typesCount === 0) {
@@ -71,14 +71,27 @@ function generatePassword(lower, upper, number, symbol, length) {
     }
 
     //this needs to be broken down please.......
+    //loop through typeCounts until the input number is reached
     for (let i = 0; i < length; i += typesCount) {
+        //check for each box to be checked
         typesArr.forEach(type => {
             const funcName = Object.keys(type)[0];
+            //Object (randomFunction) & keys (upper, lower etc.) 
+            //Type refers to lower, upper, number, symbol from (randomFunction)
 
-            generatePassword += randomFunction[funcName]();
+            generatedPassword += randomFunction[funcName]();
         });
+
     }
+    //this slices the password from 0 (length) to only incoporate th # of checked boxes
+    const finalPassword = generatedPassword.slice(0, length);
+        
+    return finalPassword;
+
+    //loop function above includes all types in one loop = asking for 1 letter password = 4 characters
 }
+
+
 
 
 // Generator functions
