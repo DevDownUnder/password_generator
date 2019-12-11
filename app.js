@@ -26,12 +26,12 @@ generateEl.addEventListener('click', () => {
     const length = +lengthEl.value; // + user input value in 'Password Length'
     const hasLower = lowercaseEl.checked; //lowercase checkbox checked? Boolean function true / false
     const hasUpper = uppercaseEl.checked;
-    const hasNumber = numbersEl.checked; 
-    const hasSymbol = symbolsEl.checked; 
+    const hasNumber = numbersEl.checked;
+    const hasSymbol = symbolsEl.checked;
 
     //innerText (A string ) will be generated in the result element
     //variables are identified above
-    //see next funtion for generatePassword
+    //see next function for generatePassword
     resultEl.innerText = generatePassword(
         hasLower,
         hasUpper,
@@ -39,7 +39,7 @@ generateEl.addEventListener('click', () => {
         hasSymbol,
         length
     )
-    
+
 });
 
 // Generate password function
@@ -48,9 +48,26 @@ function generatePassword(lower, upper, number, symbol, length) {
     //1. Initialise pw variable 
     //2. Filter out unchecked types 
     //3. Loop over length call generator function for each type 
-    //4. Add final pw to the pw var and return 
-}
+    //4. Add final pw to the pw var and return to resultEl.innerText above
 
+    let generatePassword = '';
+
+    //1. Initialise pw variable 
+    const typesCount = lower + upper + number + symbol;
+
+    console.log('typesCount: ', typesCount);
+
+    //2. Filter out unchecked types 
+    const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter
+        (
+            item => Object.values(item)[0]
+        );
+
+    console.log('typesArr: ', typesArr);
+
+    //3. Loop over length call generator function for each type 
+
+}
 
 
 // Generator functions
@@ -65,7 +82,6 @@ function getRandomLower() {
     //97 is where the lower case alphabet begins in unicode
 }
 
-console.log(getRandomLower());
 
 function getRandomUpper() {
     return String.fromCharCode(Math.floor(Math.random() * 26) + 65)
@@ -76,7 +92,6 @@ function getRandomUpper() {
     //65 is where the upper case alphabet begins in unicode
 }
 
-console.log(getRandomUpper());
 
 function getRandomNumber() {
     return String.fromCharCode(Math.floor(Math.random() * 10) + 48)
@@ -87,7 +102,6 @@ function getRandomNumber() {
     //48 is where numbers begin
 }
 
-console.log(getRandomNumber());
 
 function getRandomSymbol() {
     const symbols = '!@#$%^&*(){}[]+<>?/;:';
@@ -99,5 +113,4 @@ function getRandomSymbol() {
     //The symbols.length calculates how many letters in the string and will return one of them
 }
 
-console.log(getRandomSymbol());
 
