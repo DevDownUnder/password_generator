@@ -31,5 +31,18 @@ function getRandomNumber() {
     //48 is where numbers begin
 }
 
+console.log(getRandomNumber());
 
-console.log(getRandomNumber())
+function getRandomSymbol() {
+    const symbols = '!@#$%^&*(){}[]+<>?/;:';
+    return symbols[Math.floor(Math.random() * symbols.length)];
+    //symbols allocated in variable (they are too scattered over unicode
+    //return the value from the symbols variable 
+    //Math.floor - round downto an interger (no decimals)
+    //Math.random - select a random between 0 and 1 
+    //The symbols.length calculates how many letters in the string and will return one of them
+}
+
+console.log(getRandomSymbol());
+
+
