@@ -1,6 +1,6 @@
 //DOM Elements
 //Variables are named after the ID selectors in HTML + El for element
-//document signifies where to find the element id
+//document signifies where to find the id to create association / link
 
 const resultEl = document.getElementById('result');
 const lengthEl = document.getElementById('length');
@@ -12,7 +12,7 @@ const generateEl = document.getElementById('generate');
 const clipboardEl = document.getElementById('clipboard');
 
 
-
+//This is an object - know more please...
 const randomFunction = {
     lower: getRandomLower,
     upper: getRandomUpper,
@@ -20,13 +20,36 @@ const randomFunction = {
     symbol: getRandomSymbol
 };
 
-//Add event listener -- User clicks mouse on "Generate password"
-
+//Generate event -- User clicks mouse on "Generate password"
+// () => is simply shorthand for function()
 generateEl.addEventListener('click', () => {
-    const length = +lengthEl.value;
+    const length = +lengthEl.value; // + user input value in 'Password Length'
+    const hasLower = lowercaseEl.checked; //lowercase checkbox checked? Boolean function true / false
+    const hasUpper = uppercaseEl.checked;
+    const hasNumber = numbersEl.checked; 
+    const hasSymbol = symbolsEl.checked; 
 
-    console.log(length);
+    //innerText (A string ) will be generated in the result element
+    //variables are identified above
+    //see next funtion for generatePassword
+    resultEl.innerText = generatePassword(
+        hasLower,
+        hasUpper,
+        hasNumber,
+        hasSymbol,
+        length
+    )
+    
 });
+
+// Generate password function
+
+function generatePassword(lower, upper, number, symbol, length) {
+    //1. Initialise pw variable 
+    //2. Filter out unchecked types 
+    //3. Loop over length call generator function for each type 
+    //4. Add final pw to the pw var and return 
+}
 
 
 
